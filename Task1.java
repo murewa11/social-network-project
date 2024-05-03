@@ -1,6 +1,6 @@
 public class Task1 {
     
-    public double calculateDensity(int[][] adjacencyMatrix){
+    public float calculateDensity(int[][] adjacencyMatrix){
         /* Method made to calculate the density of a directed graph,
         by using an adjacency matrix, where where the entry at row i and column
         j is 1 if there is a directed edge from vertex i to vertex j, and 0 otherwise. */ 
@@ -23,7 +23,7 @@ public class Task1 {
         tallying the total number of directed edges in the graph */
         
         if (numVertices > 1) {          // Condition to prevent division by zero
-            return countEdges / numVertices * (numVertices - 1);
+            return countEdges / (float) (numVertices * (numVertices - 1));
         }
         else{
             return 0;                   // Density is zero if there's only one vertex
