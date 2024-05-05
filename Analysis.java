@@ -21,7 +21,7 @@ public class Analysis {
         Task2 task2 = new Task2(); // Creates an instance of Task2
         int InboundEdgeCounter = task2.nodeWithMostInboundEdges(adjacencyMatrix); // Finds vertex with the most inbound edges
 
-        Task3 task3 = new Task3();
+        Task3 task3 = new Task3(); // Creates ab instance of Task3
         int OutboundEdgeCounter = task3.nodeWithMostOutboundEdges(adjacencyMatrix); // Finds vertex with the most outbound edges
 
         String Task2vertexName = getKeyFromValue (nameIndexMap, InboundEdgeCounter); // Retrieves the name of the vertex with most inbound edges
