@@ -1,6 +1,8 @@
+import java.util.Map;
+
 public class Task2 {
     
-    public int nodeWithMostInboundEdges(int[][] adjacencyMatrix){
+    public String nodeWithMostInboundEdges(int[][] adjacencyMatrix, Map<Integer, String> indexNameMap){
         int numVertices = adjacencyMatrix.length;
         // Number of vertices within the graph  
         int[] degree = new int[numVertices];
@@ -13,13 +15,14 @@ public class Task2 {
         }
         /* Outer loop iterates through each column, while the inner loop adds the values from each row */
 
-        int LargestDegree = 0;
-        int LargestNode = 0;
+        int LargestInboundDegree = 0;
+        String LargestInboundNode = null;
 
         for (int j = 0; j < numVertices; j ++ ){
-            if (degree[j] > LargestDegree) {
-                LargestDegree = degree[j];
-                LargestNode = j;
+            String currentNodeName = indexNameMap.get(j);
+            if (degree[j] > LargestInboundDegree || (degree[j] == LargestInboundDegree && (LargestInboundNode == null || currentNodeName.compareTo(LargestInboundNode) < 0))) { 
+                LargestInboundDegree = degree [j];
+                LargestInboundNode = currentNodeName;
             }
         }
         /* Loop traverses through degree array. If degree value for the node is higher than the initiliased value of
@@ -27,7 +30,7 @@ public class Task2 {
          * Also, the corresponding node value replaces the initialised value of the LargestNode attribute.
         */
 
-        return LargestNode;
+        return LargestInboundNode;
         
     }
 }
