@@ -1,6 +1,8 @@
+import java.util.Map;
+
 public class Task3{
 
-    public int nodeWithMostOutboundEdges(int[][] adjacencyMatrix){
+    public String nodeWithMostOutboundEdges(int[][] adjacencyMatrix, Map<Integer, String> indexNameMap){
         int numVertices = adjacencyMatrix.length; // Number of vertices within the graph
           
         int[] degree = new int[numVertices]; // Array stores the degree (number of outbound edges)for each vertex. Each element is initialised to zero
@@ -14,13 +16,14 @@ public class Task3{
 
         // Initialise variables to track the mode with the largest number of outbound edges
         int LargestOutboundDegree = 0;
-        int LargestOutboundNode = 0;
+        String LargestOutboundNode = null;
 
-        // FInd the node with the highest degree
+        // Find the node with the highest degree
         for (int i = 0; i < numVertices; i ++ ){
-            if (degree[i] > LargestOutboundDegree) {
-                LargestOutboundDegree = degree[i];
-                LargestOutboundNode = i;
+            String currentNodeName = indexNameMap.get(i);
+            if (degree[i] > LargestOutboundDegree || (degree[i] == LargestOutboundDegree && (LargestOutboundNode == null || currentNodeName.compareTo(LargestOutboundNode) < 0))) { 
+                LargestOutboundDegree = degree [i];
+                LargestOutboundNode = currentNodeName;
             }
         }
 
