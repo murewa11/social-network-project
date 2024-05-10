@@ -1,8 +1,5 @@
 import java.io.*;
 import java.util.*;
-import java.io.File;
-import java.util.Scanner;
-import java.io.IOException;
 
 public class Analysis {
     public static void main(String[] args) throws IOException {
@@ -11,26 +8,27 @@ public class Analysis {
             System.err.println("File name has not been inputted correctly");
             return;
         }
+        
         String fileName = args[0]; // Stores file name from command
         Map<String, Integer> nameIndexMap = new HashMap<>(); // Creates hash map to track names in file and their indicies
         int[][] adjacencyMatrix = MatrixBuilder(fileName, nameIndexMap); // Declares adjacency matrix
 
+         // Reverse map from indices to names for Task 3
+        Map<Integer, String> indexNameMap = new HashMap<>();
+        nameIndexMap.forEach((name, index) -> indexNameMap.put(index, name));
+       
         Task1 task1 = new Task1(); // Creates an instance of Task1
         float density = task1.calculateDensity(adjacencyMatrix); // Calculates the density of the graph
+        System.out.printf("%.4f\n", density);
 
         Task2 task2 = new Task2(); // Creates an instance of Task2
-        int InboundEdgeCounter = task2.nodeWithMostInboundEdges(adjacencyMatrix); // Finds vertex with the most inbound edges
+        String Task2vertexName = task2.nodeWithMostInboundEdges(adjacencyMatrix, indexNameMap); // Finds vertex with the most inbound edges
+        System.out.println(Task2vertexName);
 
         Task3 task3 = new Task3(); // Creates ab instance of Task3
-        int OutboundEdgeCounter = task3.nodeWithMostOutboundEdges(adjacencyMatrix); // Finds vertex with the most outbound edges
-
-        String Task2vertexName = getKeyFromValue (nameIndexMap, InboundEdgeCounter); // Retrieves the name of the vertex with most inbound edges
-
-        String Task3vertexName = getKeyFromValue (nameIndexMap, OutboundEdgeCounter); // Retrieves the name of the vertex with most outbound edges
-        
-        System.out.printf("%.4f\n", density);
-        System.out.println(Task2vertexName);
+        String Task3vertexName = task3.nodeWithMostOutboundEdges(adjacencyMatrix, indexNameMap);
         System.out.println(Task3vertexName);
+        
     }
 
     private static int[][] MatrixBuilder(String fileName, Map<String, Integer> nameIndexMap)throws IOException, FileNotFoundException{
@@ -70,13 +68,5 @@ public class Analysis {
         }
         return nameIndexMap.size(); // return the number of unique names
     }
-    private static String getKeyFromValue(Map<String, Integer> map, int value ){
-        for (Map.Entry<String, Integer> entry : map.entrySet()){ //Iterates through each entry in map, with each entry consisting of a key-pair value
-            if (entry.getValue().equals(value)) {
-            // Check if the current entry's value matches with the specified value
-                return entry.getKey();
-            }
-        }
-        return null;
-    }
+
 }
