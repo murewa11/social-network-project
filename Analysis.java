@@ -28,6 +28,10 @@ public class Analysis {
         Task3 task3 = new Task3(); // Creates ab instance of Task3
         String Task3vertexName = task3.nodeWithMostOutboundEdges(adjacencyMatrix, indexNameMap);
         System.out.println(Task3vertexName);
+
+        Task5 task5= new Task5();
+        double median = task5.MedianOutboundEdges(adjacencyMatrix);
+        System.out.printf("%.2f\n", median);
         
     }
 
