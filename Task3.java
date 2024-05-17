@@ -2,7 +2,7 @@ import java.util.Map;
 
 public class Task3{
 
-    public String nodeWithMostOutboundEdges(int[][] adjacencyMatrix, Map<Integer, String> indexNameMap){
+    public String PersonWithMostFollowing(int[][] adjacencyMatrix, Map<Integer, String> indexNameMap){
         int numVertices = adjacencyMatrix.length; // Number of vertices within the graph
           
         int[] degree = new int[numVertices]; // Array stores the degree (number of outbound edges)for each vertex. Each element is initialised to zero
@@ -10,7 +10,7 @@ public class Task3{
         
         for (int i = 0; i < numVertices; i ++ ){ // Calculate the degree for each vertex
             for (int j = 0; j < numVertices; j ++ ){    
-                degree[i] += adjacencyMatrix[i][j];
+                degree[i] += adjacencyMatrix[j][i];
             }
         }
 
@@ -30,3 +30,5 @@ public class Task3{
         return LargestOutboundNode; // Return the index of the node with the most outbound edges
     }
 }
+
+
