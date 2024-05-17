@@ -2,7 +2,7 @@ import java.util.Map;
 
 public class Task2 {
     
-    public String nodeWithMostInboundEdges(int[][] adjacencyMatrix, Map<Integer, String> indexNameMap){
+    public String PersonWithMostFollowers(int[][] adjacencyMatrix, Map<Integer, String> indexNameMap){
         int numVertices = adjacencyMatrix.length;
         // Number of vertices within the graph  
         int[] degree = new int[numVertices];
@@ -10,7 +10,7 @@ public class Task2 {
 
         for (int j = 0; j < numVertices; j ++ ){
             for (int i = 0; i < numVertices; i ++ ){    
-                degree[j] += adjacencyMatrix[i][j];
+                degree[j] += adjacencyMatrix[j][i];
             }
         }
         /* Outer loop iterates through each column, while the inner loop adds the values from each row */
