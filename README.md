@@ -1,1 +1,1 @@
-# SCCSummerProject
+This repositry contains all the necessary task classes for a joint-major to complete for Project 2, the Social Network in Java, and also incldues the analysis class that brings all the tasks together to produce the necessary output.
