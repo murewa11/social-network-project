@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Task5 {
 
-    public double MedianOutboundEdges(int[][] adjacencyMatrix){
+    public double MedianNumberOfFollowers(int[][] adjacencyMatrix){
         
         int numVertices = adjacencyMatrix.length;
         int[] outboundEdges = new int[numVertices];
